@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','%o%38v(*%04y9$xn(05q!omd+y4pc-bdyz8slz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("IS_PROD") == "true" # IS_PROD = FALSE
 
-ALLOWED_HOSTS = ['demo-timetasks-stock.herokuapp.com']
+ALLOWED_HOSTS = ['cfedemo-time-task.herokuapp.com']
 
 
 # Application definition
