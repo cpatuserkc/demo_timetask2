@@ -50,6 +50,9 @@ websockets = "==8.1"
 zipp = "==3.4.1"
 Django = "==3.1.7"
 psycopg2 = "*"
+boto = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.9"
