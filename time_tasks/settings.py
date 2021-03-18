@@ -86,7 +86,7 @@ DATABASES = {
 }
 if not DEBUG:
     import dj_database_url
-    db_from_env = dj_database_url.config() #DATABASE URL inside env
+    db_from_env = dj_database_url.config() #DATABASE URL inside env,
     DATABASES['default'].update(db_from_env)
     DATABASES['default']['CONN_MAX_AGE'] = 500
 
