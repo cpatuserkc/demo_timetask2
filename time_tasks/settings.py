@@ -23,8 +23,8 @@ print(f"Base dir -> {BASE_DIR}")
 SECRET_KEY = os.environ.get('SECRET_KEY','%o%38v(*%04y9$xn(05q!omd+y4pc-bdyz8slzrda@nobi)7l3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if not DEBUG = os.environ.get("IS_PROD") == "true": # IS_PROD = FALSE
-    DEBUG = True
+DEBUG = os.environ.get("IS_PROD") == "true" # IS_PROD = FALSE
+#DEBUG = True
     
 print(f"Debug = {DEBUG}")
 
