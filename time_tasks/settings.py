@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-print(BASE_DIR)
+print(f"Base dir -> {BASE_DIR}")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -24,6 +24,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY','%o%38v(*%04y9$xn(05q!omd+y4pc-bdyz8slz
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("IS_PROD") == "true" # IS_PROD = FALSE
+
+print(f"Debug ? {DEBUG}")
 
 ALLOWED_HOSTS = ['cfedemo-time-task.herokuapp.com']
 
@@ -84,13 +86,13 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-print(DATABASES['default']['NAME'])
+print(f"first version -> {DATABASES['default']['NAME']}")
 if not DEBUG:
     import dj_database_url
     db_from_env = dj_database_url.config() #DATABASE URL inside env,
     DATABASES['default'].update(db_from_env)
     DATABASES['default']['CONN_MAX_AGE'] = 500
-    print(db_from_envdb_from_env)
+    print(f"db from env var -> {db_from_env}\n updated ->{DATABASES['default']}")
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
