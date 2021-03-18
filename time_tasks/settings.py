@@ -90,7 +90,7 @@ DATABASES = {
     }
 }
 print(f"first version -> {DATABASES['default']['NAME']}")
-if not DEBUG:
+if DEBUG:
     import dj_database_url
     db_from_env = dj_database_url.config() #DATABASE URL inside env,
     DATABASES['default'].update(db_from_env)
