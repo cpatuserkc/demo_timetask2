@@ -23,11 +23,14 @@ print(f"Base dir -> {BASE_DIR}")
 SECRET_KEY = os.environ.get('SECRET_KEY','%o%38v(*%04y9$xn(05q!omd+y4pc-bdyz8slzrda@nobi)7l3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("IS_PROD") == "true" # IS_PROD = FALSE
-
+if not DEBUG = os.environ.get("IS_PROD") == "true": # IS_PROD = FALSE
+    DEBUG = True
+    
 print(f"Debug = {DEBUG}")
 
-ALLOWED_HOSTS = ['cfedemo-time-task.herokuapp.com']
+ALLOWED_HOSTS = ['cfedemo-time-task.herokuapp.com',
+    '127.0.0.1'
+    ]
 
 
 # Application definition
@@ -87,12 +90,12 @@ DATABASES = {
     }
 }
 print(f"first version -> {DATABASES['default']['NAME']}")
-# if not DEBUG:
-import dj_database_url
-db_from_env = dj_database_url.config() #DATABASE URL inside env,
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
-print(f"db from env var -> {db_from_env}\n updated ->{DATABASES['default']}")
+if not DEBUG:
+    import dj_database_url
+    db_from_env = dj_database_url.config() #DATABASE URL inside env,
+    DATABASES['default'].update(db_from_env)
+    DATABASES['default']['CONN_MAX_AGE'] = 500
+    print(f"db from env var -> {db_from_env}\n updated ->{DATABASES['default']}")
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 

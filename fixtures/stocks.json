@@ -1,0 +1,13 @@
+time_tasks.celery package initiated
+Celery app name <Celery time_tasks at 0x1b8cb4f92b0> 
+base redis url redis://localhost:6379 
+
+Base dir -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks
+Debug = False
+first version -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks\db.sqlite3
+Base dir -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks
+Debug = False
+first version -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks\db.sqlite3
+Base dir -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks
+Debug = False
+first version -> S:\cpatech\webapps\tutorials\cfe_timetask2_proj\time_tasks\db.sqlite3
