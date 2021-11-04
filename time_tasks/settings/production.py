@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+MODULE="production"
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-print(f"Base dir -> {BASE_DIR}")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -28,8 +28,10 @@ DEBUG = os.environ.get("IS_PROD") == "true" # IS_PROD = FALSE
     
 print(f"Debug = {DEBUG}")
 
-ALLOWED_HOSTS = ['cfedemo-time-task.herokuapp.com',
-    '127.0.0.1'
+ALLOWED_HOSTS = [
+    'cfedemo-time-task.herokuapp.com',
+    '127.0.0.1',
+    'localhost'
     ]
 
 
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'stocks',
 ]
 
+#IMPORTED from celery.conf
 from time_tasks.celery.conf import *
 
 MIDDLEWARE = [
@@ -135,20 +138,22 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #static
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+from time_tasks.static_srv.local import *
 
 
-LINODE_BUCKET = 'cfedemo'
-LINODE_BUCKET_REGION = 'us-east-1'
-LINODE_BUCKET_ACCCESS_KEY = os.environ.get('LINODE_BUCKET_ACCCESS_KEY')
-LINODE_BUCKET_SECRET_KEY = os.environ.get('LINODE_BUCKET_SECRET_KEY')
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+
+CORS_REPLACE_HTTPS_REFERER      = False
+HOST_SCHEME                     = "http://"
+SECURE_PROXY_SSL_HEADER         = None
+SECURE_SSL_REDIRECT             = False
+SESSION_COOKIE_SECURE           = False
+CSRF_COOKIE_SECURE              = False
+SECURE_HSTS_SECONDS             = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
+SECURE_FRAME_DENY               = False
 
 
-AWS_S3_ENDPOINT_URL = f'https://{LINODE_BUCKET_REGION }.linodeobjects.com'
-AWS_ACCESS_KEY_ID = LINODE_BUCKET_ACCCESS_KEY
-AWS_SECRET_ACCESS_KEY = LINODE_BUCKET_SECRET_KEY
-AWS_S3_REGION_NAME = LINODE_BUCKET_REGION
-AWS_S3_USE_SSL = True
-AWS_STORAGE_BUCKET_NAME = LINODE_BUCKET
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

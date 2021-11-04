@@ -1,0 +1,69 @@
+{% load static %}
+{% url 'index' as home_url %}
+{% url 'stocks:home' as stocks_url %}
+{% url 'accounts:home' as accounts_url %}
+{% url 'account_logout' as logout_url %}
+{% url 'search:query' as search_url %}
+{% url 'localconfig:home' as localconfig_url %}
+{% url 'account_login' as login_url %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container">
+    <a class="navbar-brand icon icon--white" href="{{ home_url }}">
+      <img src="{% static 'img/logo.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      {% if brand_name %} {{brand_name }} {% else %} Code Journey {% endif %}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="list nav_list collapsible_content navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav-item nav__item {% if request.path == home_url %}active{% endif %}">
+          <a class="nav-link" href="{{ home_url }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item nav__item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu nav__item" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ accounts_url }}">Home</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ logout_url }}">Logout</a></li>
+          </ul>
+        </li>
+          {% if request.user.is_staff %}
+        <li class="nav-item dropdown nav__item">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+            <li><a class="dropdown-item" href="{{search_url}}">Search</a></li>
+            <li><a class="dropdown-item" href="{{localconfig_url}}">Local Config</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+          {% endif %}
+        <li class="nav-item dropdown nav__item">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Stocks
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ stocks_url }}">Home</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item nav__item {% if request.path == languages_url %}active{% endif %}">
+          <a class="nav-link" href="{{ login_url }}">Signup</a>
+        </li>
+        <li class="nav-item nav__item {% if request.path == resources_url %}active{% endif %}">
+          <a class="nav-link" href="{{ login_url }}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

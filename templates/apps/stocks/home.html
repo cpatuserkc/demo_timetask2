@@ -1,0 +1,16 @@
+{% extends "base/base.html" %} 
+{% block pgcontent %}
+
+<div class="row">
+  <div class="col">
+    <h1>{{pgname}}</h1>
+  </div>
+  <div class="col">
+    <h1>Stocks to Review</h1>
+    {% for obj in object_list %}
+      <p>{{obj.name}}</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock pgcontent %}

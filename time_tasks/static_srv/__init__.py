@@ -1,0 +1,3 @@
+"""
+Serving static files
+"""

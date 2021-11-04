@@ -40,14 +40,16 @@ class Company(models.Model):
     # events per min
     
     def scrape(self,service='business_insider'):
+        print(f"CALLED scrape self  {self} \nservice {service}")
         return company_price_scrape_task.delay(self.id, service='business_insider')
 
     def enable_period_task(self,save=False):
+        print(f"CALLED enable period task, {self}")
         instance_id = self.id
         ticker = self.ticker
         task_name = f'company-{ticker}-{instance_id}'.lower()
         if not self.periodic_task:
-            schedule = CrontabSchedule.objects.get(id=3)
+            schedule = CrontabSchedule.objects.get(id=1)
             # except TypeError:
             #     print('not a tuple ')
             #     pass

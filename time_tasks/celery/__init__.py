@@ -14,6 +14,9 @@ BASE_REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'time_tasks.settings')
 
+'''
+THIS IS IMPORTED INTO DJANGO via __init__ of the time_tasks app
+'''
 app = Celery('time_tasks')
 
 

@@ -1,0 +1,26 @@
+<div class="card" style="width: 20rem">
+  <div class="card-body">
+    {% if instance.email != None %}
+    <h3>Contact Card</h3>
+    <h4 class="card-title">{{ instance.name }}</h4>
+    <p class="card-text">{{ instance.email }}</p>
+    <p class="card-text">Id: {{ instance.id }}</p>
+    <p class="card-text">Phone: {{ instance.phone }}</p>
+    <p class="card-text">Active: {{ instance.active }}</p>
+    {% if instance.client.count > 0 %}
+    <p class="card-text">Clients: {{ instance.client_set.all }}</p>
+    {% endif %}
+    {% elif instance.federal_tax_filing != None %}
+    <h3>Client Card</h3>
+    <h4 class="card-title">{{ instance.name }}</h4>
+      <p class="card-text">Contact: {{ instance.contact.email }}</p>
+      <p class="card-text">ID: {{ instance.id }}</p>
+      <p class="card-text">TaxType: {{ instance.federal_tax_filing }}</p>
+      <p class="card-text">tx_entity: {{ instance.tx_entity }}</p>
+    {% endif %}
+    <div class="text-center">
+      <a href="{{ instance.get_absolute_url }}" class="btn btn-primary my-2">View</a
+      >
+    </div>
+  </div>
+</div>

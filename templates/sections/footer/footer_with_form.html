@@ -1,0 +1,34 @@
+{% load static %}
+<footer>
+    <div class="row justify-content-center">
+
+        <div class="col-md-5 text-center">
+            <!-- Footer Logo -->
+            <a href="{% url 'index' %}">
+            <img src="{% static 'img/ckc.png' %}">
+            </a>
+            <p>Company footer/saying to go with log</p>
+            <!-- Contact -->
+            <strong>Contact Us</strong>
+            <p>(888) 888-8888<br>email@test.com</p>
+            <!-- Optionally add icons here -->
+        </div>
+        <div class="col-md-5 px-0 ">
+            <h3>Contact Us</h3>
+            <div class="i-am-centered"> 
+                <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %}
+                    <div class="form-group"> 
+                        {{ form.as_p }} 
+                    </div> 
+                    <button type='submit' class='btn btn-info' >Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Line that spans the bottom of the page -->
+        <hr class="socket">
+        &copy; TBD Theme.
+
+    </div>
+    <!-- End Contact Section -->
+</footer>

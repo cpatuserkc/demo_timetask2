@@ -1,0 +1,42 @@
+{% load static %}
+<div class="block block--dark footer">
+    <div class="container grid footer__sections">
+        <section class="collapsible footer__section">
+            <header class="collapsible__header">
+                <h2 class="collapsible__heading footer__heading">Products & Resources</h2>
+                 <svg class="icon icon--white collapsible__chevron">
+                     <use :href="img/sprite.svg#chevron"></use>
+                 </svg>
+            </header>
+            <div class="collapsible__content">
+                <ul class="list">
+                    <li><a href="" >CPAs & Accountants</a></li>
+                    <li><a href="" >Financial Planners</a></li>
+                    <li><a href="" >Developer Tools</a></li>
+                    <li><a href="" >Cool Stuff for Anyone!</a></li>
+                </ul>
+            </div>
+        </section>
+        <section class="collapsible footer__section">
+            <header class="collapsible__header">
+                <h2 class="collapsible__heading footer__heading">Who We Are</h2>
+            </header>
+            <div class="collapsible__content">
+                <ul class="list">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Affiliates</a></li>
+                </ul>
+            </div>
+        </section>
+        <div class="footer__brand">
+            <div class="custom__comp-brand-social">
+                <h3>Follow Us</h3>
+            </div>
+            <div>
+                <img class="nav__logo" src="{% static 'img/logo.svg' %}" alt="">
+                <p class="footer__copyright">Copyright 2021 CPATech</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+{% extends "base/base.html" %} 
+{% block pgcontent %}
+
+<div class="col-12">
+  <h1>Account</h1>
+  <hr />
+  <div class="row">
+    <div class="col">
+      {{user.email}}
+    </div>
+  </div>
+</div>
+
+
+<div id="root"></div>
+
+<div class="row">
+  <div class="col-12 col-md my-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Support</h4>
+        <div class="list-group">
+          <a class="list-group-item" href='{% url "about" %}'>About</a>
+          <a class="list-group-item" href='{% url "contact" %}'>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md my-3" id="myjourney">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">My Journey</h4>
+        <div class="list-group">
+          <a class="list-group-item" href='#'>My Courses</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md my-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Account Details</h4>
+        <div class="list-group">
+          <a class="list-group-item" href=#>Change Password</a>
+          <a class="list-group-item" href=#>Reset Password</a>
+          <a class="list-group-item" href=#>Settings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 col-md my-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Resources</h4>
+        <div class="list-group">
+          <a class="list-group-item" href='#'>Code Ref</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if request.user.is_staff %}
+  <div class="col-12 col-md my-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Admin</h4>
+        <div class="list-group">
+          <a class="list-group-item" href="{% url 'localconfig:home' %}">Local Config</a>
+          <a class="list-group-item" href="/admin/">Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock pgcontent %}

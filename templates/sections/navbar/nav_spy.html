@@ -1,0 +1,49 @@
+{% load static %}
+{% url 'index' as home_url %}
+{% url 'profiles:home' as profile_url %}
+{% url 'account_logout' as logout_url %}
+{% url 'account_login' as login_url %}
+
+<nav class="nav navbar navbar-expand-lg bg-dark fixed-top">
+    <div class="container-fluid">
+        <!-- navbar-brand is a common class for logos -->
+        <a class="navbar-brand" href=""><img class="nav__logo" src="{% static 'img/logo.svg' %}" alt=""></a>
+        <!-- toggler is the hamburger menu that will appear when the page shrinks -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+        <!-- collappsable and will go to right side -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <!-- ml-auto sets the nav to the right hand side -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#stories">Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#resources">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tools">Tools</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{profile_url}}">{{user.username}} Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{logout_url}}">logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{login_url}}">Login</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
