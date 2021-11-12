@@ -1,11 +1,43 @@
-{% extends 'base/base.html' %}
 {% load static %}
-{% block pgcontent %}
-<div class = "jumbotron" >
-    <div class="col">
-        <h1>{{pgname}}</h1>
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- From React -->
+  <meta name="theme-color" content="#000000" />
+  <title>Base Template</title>
+  <!-- From React -->
+  {% include 'base/css.html' %}
+  {% include 'base/js.html' %}
+  {% block title %}{% endblock %}
+</head>
+<body>
+  <header class="container-fluid">
+    {% include 'sections/navbar/nav_stnd.html' %}
+  </header>
+  <main class='container'>
+    <div class="row">
+      <div class="col-md-9">
+        {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
+    <section>
+    <h1>Welcome</h1>    
+    </section>
+  </main>
+  <div>
+    {% include 'sections/footer/footer_stnd.html' %}
 </div>
-
-
-{% endblock %}
+<div>
+    {% include 'base/js.html' %}
+  </div>
+</body>
+</html>
